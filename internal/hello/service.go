@@ -61,9 +61,7 @@ func (s *service) Start(ctx context.Context, g *errgroup.Group) error {
 	// start grpc server
 	s.grpcServer = grpc.NewServer()
 	grpcHello.RegisterGrpcHelloServer(s.grpcServer, s)
-	go func() {
-		grpcStart.Start(s.grpcServer, s.cfg.Listen)
-	}()
+
 	g.Go(grpcStart.Start(s.grpcServer, s.cfg.Listen))
 
 	s.setReady(true)

@@ -33,15 +33,6 @@ type service struct {
 func New(ctx context.Context, g *errgroup.Group, cfg *Config) (Service, error) {
 	logger := newLogger(cfg.LogLevel)
 
-	//clientCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	//defer cancel()
-	//
-	//// start cancelClient
-	//conn, err := grpc.DialContext(clientCtx, cfg.CancelClientUrl, grpc.WithInsecure(), grpc.WithBlock())
-	//if err != nil {
-	//	return nil, fmt.Errorf("dial grpcCancel failed: %w", err)
-	//}
-
 	svc := service{
 		ctx:            ctx,
 		cfg:            cfg,
